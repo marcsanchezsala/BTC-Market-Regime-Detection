@@ -20,7 +20,7 @@ def ma_slope(df, ma_type='SMA', length=20, slope_mode='Raw', col_name='slope'):
     if ma_type.upper() == 'SMA':
         ma = df['Close'].rolling(window=length).mean()
     elif ma_type.upper() == 'EMA':
-        ma = df['Close'].ewm(span=length, adjust=False).mean()
+        ma = df['Close'].ewm(span=length, adjust=False, min_periods=length).mean()
     else:
         raise ValueError("ma_type debe ser 'SMA' o 'EMA'")
 
@@ -36,7 +36,6 @@ def ma_slope(df, ma_type='SMA', length=20, slope_mode='Raw', col_name='slope'):
     else:
         slope_final = slope_raw
 
-    # 4. Asignar al DataFrame
-    df[col_name] = slope_final.fillna(0) # Rellenamos los primeros NaN con 0
-    
+    df[col_name] = slope_final
+
     return df
