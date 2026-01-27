@@ -8,7 +8,7 @@ Traditional K-Means often fails to capture the temporal morphology of financial 
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Python**
 * **Data Science:** `Pandas`, `NumPy`, `Scikit-Learn`.
@@ -18,7 +18,7 @@ Traditional K-Means often fails to capture the temporal morphology of financial 
 
 ---
 
-## 📊 Methodology & Experiments
+## Methodology & Experiments
 
 The project is divided into two main analytical approaches:
 
