@@ -31,7 +31,7 @@ class WKMeans:
         sorted_samples = np.sort(cluster_samples, axis=0)
         return np.median(sorted_samples, axis=0)
 
-    def fit(self, samples):
+    def fit(self, samples, inertia = False):
         """
         Fit the WK-means clustering algorithm.
 
@@ -67,6 +67,12 @@ class WKMeans:
                 break
 
             self.centroids = new_centroids
+        
+        if inertia:
+            self.inertia_ = 0
+            for sample in samples:
+                dist = min([self.wasserstein_distance(sample, c) for c in self.centroids])
+                self.inertia_ += dist**2
 
     def predict(self, samples):
         """
